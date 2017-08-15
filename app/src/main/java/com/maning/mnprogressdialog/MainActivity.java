@@ -354,7 +354,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showPrgDlgTAnim() {
         new HProgressDialog(this)
                 .withMsg("请稍后...")
-                .tweenAnim(R.drawable.progress_roate, R.anim.prg_anim_tween)
+              //  .tweenAnim(R.drawable.progress_roate, R.anim.prg_anim_tween)
+                .tweenAnim(R.drawable.loading1, R.anim.prg_anim_tween)
                 .outsideCancelable(false)
                 .cancelable(true)
                 .show();
