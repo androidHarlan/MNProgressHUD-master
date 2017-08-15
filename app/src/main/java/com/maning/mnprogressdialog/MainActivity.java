@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.hengda.zwf.hddialog.HProgressDialog;
 import com.maning.mndialoglibrary.MProgressDialog;
 import com.maning.mndialoglibrary.MStatusDialog;
 import com.maning.mndialoglibrary.MToast;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn11;
     private Button btn12;
     private Button btn13;
-
+    private Button progressbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn11 = (Button) findViewById(R.id.btn11);
         btn12 = (Button) findViewById(R.id.btn12);
         btn13 = (Button) findViewById(R.id.btn13);
-
+        progressbar= (Button) findViewById(R.id.progressbar);
         btn01.setOnClickListener(this);
         btn02.setOnClickListener(this);
         btn03.setOnClickListener(this);
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn11.setOnClickListener(this);
         btn12.setOnClickListener(this);
         btn13.setOnClickListener(this);
+        progressbar.setOnClickListener(this);
     }
 
     private void configDialogDefault() {
@@ -144,7 +146,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showProgressDialog01() {
         configDialogDefault();
-        mMProgressDialog.show();
+
+        mMProgressDialog.show("请稍后...");
 
         mHandler.postDelayed(new Runnable() {
             @Override
@@ -198,6 +201,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.progressbar:
+                showPrgDlgTAnim();
+                break;
             case R.id.btn01:
                 showProgressDialog01();
                 break;
@@ -343,6 +349,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         task.cancel();
         timer = null;
         task = null;
+    }
+    //使用介绍在https://github.com/Tailyou/OkDialog
+    private void showPrgDlgTAnim() {
+        new HProgressDialog(this)
+                .withMsg("请稍后...")
+                .tweenAnim(R.drawable.progress_roate, R.anim.prg_anim_tween)
+                .outsideCancelable(false)
+                .cancelable(true)
+                .show();
     }
 
 }

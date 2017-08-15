@@ -222,7 +222,17 @@
                 android:textColor="#FFFFFF"/>
 
         </LinearLayout>
-
+        <Button
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:stateListAnimator="@null"
+            android:text="好看进度条"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 
